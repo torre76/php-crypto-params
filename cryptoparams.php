@@ -148,13 +148,3 @@ class CryptoParams {
     }	
 
 };
-
-
-// Test for now
-$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", "a1e1eb2a20241234a1e1eb2a20241234");
-//$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", null);
-
-var_dump($cp->key);
-var_dump($cp->iv);
-var_dump($cp->encrypt("aieiebrazorf")); // 'iW8qzzEWpWRN0NPNoOwu3A==' == 'iW8qzzEWpWRN0NPNoOwu3A=='
-var_dump($cp->decrypt($cp->encrypt("aieiebrazorf")));

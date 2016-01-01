@@ -5,6 +5,9 @@ namespace CryptoParams;
 // Hex2Bin is not available on PHP 5.3
 if ( !function_exists( 'hex2bin' ) ) {
     function hex2bin( $str ) {
+    	if (!ctype_xdigit($str)){
+    		return FALSE;
+    	}
         $sbin = "";
         $len = strlen( $str );
         for ( $i = 0; $i < $len; $i += 2 ) {
@@ -28,6 +31,8 @@ if ( !function_exists( 'bin2hex' ) ) {
   	}
 }
 
+class CryptoParamsException extends \Exception{}
+
 class CryptoParams {
 
 	private $aesKey = null;
@@ -46,26 +51,26 @@ class CryptoParams {
 
 	private function validateAESKey($key){
 		if (!is_string($key)){
-			throw new Exception("AES Key should be a string");
+			throw new CryptoParamsException("AES Key should be a string");
 		}
 		if (strlen($key) != 32){
-			throw new Exception("AES Key has to be 32 bytes long");
+			throw new CryptoParamsException("AES Key has to be 32 bytes long");
 		}
 		if (hex2bin($key) === FALSE){
-			throw new Exception("AES Key has to be expressed as hexadecimal string");
+			throw new CryptoParamsException("AES Key has to be expressed as hexadecimal string");
 		}
 		return hex2bin($key);
 	}
 
 	private function validateAESIV($iv){
 		if (!is_string($iv)){
-			throw new Exception("AES Initialization Vector should be a string");
+			throw new CryptoParamsException("AES Initialization Vector should be a string");
 		}
 		if (strlen($iv) != 32){
-			throw new Exception("AES Initialization Vector has to be 32 bytes long");
+			throw new CryptoParamsException("AES Initialization Vector has to be 32 bytes long");
 		}
 		if (hex2bin($iv) === FALSE){
-			throw new Exception("AES Initialization Vector has to be expressed as hexadecimal string");
+			throw new CryptoParamsException("AES Initialization Vector has to be expressed as hexadecimal string");
 		}
 		return hex2bin($iv);
 	}
@@ -105,7 +110,7 @@ class CryptoParams {
 
 	public function encrypt($str){
 		if (!is_string($str)){
-			throw new Exception("Value must be a string");
+			throw new CryptoParamsException("Value must be a string");
 		}
 		$result = $this->padPKCS7($str);
 		$result = mcrypt_encrypt(
@@ -121,7 +126,7 @@ class CryptoParams {
 
 	public function decrypt($str){
 		if (!is_string($str)){
-			throw new Exception("Value must be a string");
+			throw new CryptoParamsException("Value must be a string");
 		}		
 		$result = base64_decode(trim($str));
 		$result = mcrypt_decrypt(

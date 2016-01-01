@@ -59,9 +59,6 @@ class CryptoParams {
 		if (!ctype_xdigit($key)){
 			throw new CryptoParamsException("AES Key has to be expressed as hexadecimal string");	
 		}
-		if (hex2bin($key) === FALSE){
-			throw new CryptoParamsException("AES Key has to be expressed as hexadecimal string");
-		}
 		return hex2bin($key);
 
 	}
@@ -75,9 +72,6 @@ class CryptoParams {
 		}
 		if (!ctype_xdigit($iv)){
 			throw new CryptoParamsException("AES Key has to be expressed as hexadecimal string");	
-		}
-		if (hex2bin($iv) === FALSE){
-			throw new CryptoParamsException("AES Initialization Vector has to be expressed as hexadecimal string");
 		}
 		return hex2bin($iv);			
 

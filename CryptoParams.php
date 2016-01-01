@@ -18,19 +18,6 @@ if ( !function_exists( 'hex2bin' ) ) {
     }
 }
 
-if ( !function_exists( 'bin2hex' ) ) {
-	function bin2hex($h){
-  		if (!is_string($h)){
-  			return FALSE;
-  		}
-  		$r='';
-  		for ($a=0; $a<strlen($h); $a+=2) {
-  			$r.=chr(hexdec($h{$a}.$h{($a+1)})); 
-  		}
-  		return $r;
-  	}
-}
-
 class CryptoParamsException extends \Exception{}
 
 class CryptoParams {

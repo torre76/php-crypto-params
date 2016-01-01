@@ -94,18 +94,23 @@ class CryptoParams {
 	public function __get ($name){
 		switch($name){
 			case "key":{
-				if ($this->aesKey != null){
-					return bin2hex($this->aesKey);
-				}else{
-					return null;
-				}
+				return bin2hex($this->aesKey);
 			}
 			case "iv":{
-				if ($this->aesIv != null){
-					return bin2hex($this->aesIv);
-				}else{
-					return null;
-				}
+				return bin2hex($this->aesIv);
+
+			}
+		}
+	}
+
+	public function __set($name, $value){
+		switch($name){
+			case "key":{
+				$this->aesKey = $this->validateAESKey($value);
+			}
+			case "iv":{
+				$this->aesIv = $this->validateAESIV($value);
+
 			}
 		}
 	}

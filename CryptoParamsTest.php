@@ -11,7 +11,9 @@ class CryptoParamsTest extends PHPUnit_Framework_TestCase{
 		$this->assertTrue(is_string($cp->key));
 		$this->assertTrue(is_string($cp->iv));
 
-		$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", "a1e1eb2a20241234a1e1eb2a20241234");
+		$cp = new \CryptoParams\CryptoParams();
+		$cp->key = "d0540d01397444a5f368185bfcb5b66b";
+		$cp->iv = "a1e1eb2a20241234a1e1eb2a20241234";
 		$this->assertEquals($cp->key, "d0540d01397444a5f368185bfcb5b66b");
 		$this->assertEquals($cp->iv, "a1e1eb2a20241234a1e1eb2a20241234");
 	}

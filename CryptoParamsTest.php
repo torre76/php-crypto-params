@@ -29,6 +29,21 @@ class CryptoParamsTest extends PHPUnit_Framework_TestCase{
 	public function testInvalidInitializationKeyNotHex(){
 		$this->setExpectedException('CryptoParams\CryptoParamsException');
 		$cp = new \CryptoParams\CryptoParams("aie1eb2a20241234a1e1eb2a20241234");
-	}		
+	}	
+
+	public function testInvalidInitializationIVLengthMismatch(){
+		$this->setExpectedException('CryptoParams\CryptoParamsException');
+		$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", "ouch");
+	}
+
+	public function testInvalidInitializationIVNotString(){
+		$this->setExpectedException('CryptoParams\CryptoParamsException');
+		$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", array("ouch"));
+	}	
+
+	public function testInvalidInitializationIVNotHex(){
+		$this->setExpectedException('CryptoParams\CryptoParamsException');
+		$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", "aie1eb2a20241234a1e1eb2a20241234");
+	}			
 
 }

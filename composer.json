@@ -1,6 +1,32 @@
 {
+	"name": "torre76/php-crypto-params",
+	"description": "Utility function to encrypt - decrypt string using AES symmetric algorithm that is compatible with https://code.google.com/p/crypto-js/",
+    "version": "1.0.0",
+    "keywords": [
+    	"encrypt",
+    	"decrypt",
+    	"AES",
+    	"parameters",
+    	"query string"
+    ],
+    "homepage": "https://github.com/torre76/php-crypto-params",
+    "license":[
+    	"LGPL-3.0+"
+    ],
+    "authors": [
+        {
+            "name": "Gian Luca Dalla Torre",
+            "email": "gianluca@gestionaleauto.com",
+            "homepage": "http://www.gestionaleauto.com",
+            "role": "CTO"
+        }
+    ],    
     "require-dev": {
         "phpunit/phpunit": "4.8.*",
 	"satooshi/php-coveralls": "~1.0"
+    },
+    "require": {
+    	"php": ">= 5.3.0",
+    	"ext-mcrypt": "*"
     }
 }

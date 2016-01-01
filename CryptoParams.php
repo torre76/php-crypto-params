@@ -56,10 +56,14 @@ class CryptoParams {
 		if (strlen($key) != 32){
 			throw new CryptoParamsException("AES Key has to be 32 bytes long");
 		}
-		if (hex2bin($key) === FALSE){
+		try{
+			if (hex2bin($key) === FALSE){
+				throw new CryptoParamsException("AES Key has to be expressed as hexadecimal string");
+			}
+			return hex2bin($key);
+		}catch (Exception $e){
 			throw new CryptoParamsException("AES Key has to be expressed as hexadecimal string");
 		}
-		return hex2bin($key);
 	}
 
 	private function validateAESIV($iv){
@@ -69,10 +73,14 @@ class CryptoParams {
 		if (strlen($iv) != 32){
 			throw new CryptoParamsException("AES Initialization Vector has to be 32 bytes long");
 		}
-		if (hex2bin($iv) === FALSE){
-			throw new CryptoParamsException("AES Initialization Vector has to be expressed as hexadecimal string");
+		try{
+			if (hex2bin($iv) === FALSE){
+				throw new CryptoParamsException("AES Initialization Vector has to be expressed as hexadecimal string");
+			}
+			return hex2bin($iv);			
+		}catch (Exception $e){
+			throw new CryptoParamsException("AES Key has to be expressed as hexadecimal string");
 		}
-		return hex2bin($iv);
 	}
 
 	private function padPKCS7($str){

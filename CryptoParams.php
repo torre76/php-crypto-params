@@ -98,7 +98,6 @@ class CryptoParams {
 			}
 			case "iv":{
 				return bin2hex($this->aesIv);
-
 			}
 		}
 	}
@@ -110,7 +109,6 @@ class CryptoParams {
 			}
 			case "iv":{
 				$this->aesIv = $this->validateAESIV($value);
-
 			}
 		}
 	}

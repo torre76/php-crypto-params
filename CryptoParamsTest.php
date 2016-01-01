@@ -58,6 +58,31 @@ class CryptoParamsTest extends PHPUnit_Framework_TestCase{
 		$this->setExpectedException('CryptoParams\CryptoParamsException');		
 		$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", "a1e1eb2a20241234a1e1eb2a20241234");
 		$encrypted = $cp->encrypt(array("aieiebrazorf"));
+	}	
+
+	public function testSimpleDecryption(){
+		$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", "a1e1eb2a20241234a1e1eb2a20241234");
+		$encrypted = $cp->decrypt("iW8qzzEWpWRN0NPNoOwu3A==");
+		$this->assertEquals($encrypted, "aieiebrazorf");	
+	}	
+
+	public function testSimpleDecryptionFailure(){
+		$this->setExpectedException('CryptoParams\CryptoParamsException');		
+		$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", "a1e1eb2a20241234a1e1eb2a20241234");
+		$encrypted = $cp->decrypt(array("iW8qzzEWpWRN0NPNoOwu3A=="));
+	}	
+
+	public function testJSONEcryptDecrypt(){
+		$cp = new \CryptoParams\CryptoParams("d0540d01397444a5f368185bfcb5b66b", "a1e1eb2a20241234a1e1eb2a20241234");
+		$data = array();
+		$data["id"] = 1;
+		$data["description"] = "Description";
+		$buffer = json_encode($data);
+		$encrypted = $cp->encrypt($buffer);
+		$buffer = $cp->decrypt($encrypted);
+		$data = json_decode($buffer, FALSE);
+		$this->assertEquals($data->id, 1);
+		$this->assertEquals($data->description, "Description");	
 	}		
 
 }

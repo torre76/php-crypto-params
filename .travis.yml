@@ -1,0 +1,20 @@
+# .travis.yml
+language: php
+php:
+  - 7.0
+  - 5.6
+  - 5.5
+  - 5.4
+  - 5.3
+
+install:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit 
+
+after_success:
+  - travis_retry php vendor/bin/coveralls
+  # or enable logging
+  - travis_retry php vendor/bin/coveralls -v

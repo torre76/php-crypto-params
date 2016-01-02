@@ -1,7 +1,6 @@
 {
 	"name": "torre76/php-crypto-params",
 	"description": "Utility function to encrypt - decrypt string using AES symmetric algorithm that is compatible with https://code.google.com/p/crypto-js/",
-    "version": "1.0.0",
     "keywords": [
     	"encrypt",
     	"decrypt",

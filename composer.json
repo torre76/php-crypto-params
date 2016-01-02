@@ -38,7 +38,14 @@
         "exclude": [
             "/test", 
             "/build", 
-            "/vendor"
+            "/vendor",
+            "/.travis.yml",
+            "/**/*.md",
+            "/*.xml",
+            "/**/.DS_Store",
+            "/.gitignore",
+            "/*.md",
+            "/.DS_Store"
         ]
     }    
 }

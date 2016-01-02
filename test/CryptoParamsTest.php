@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ . '/CryptoParams.php';
+require __DIR__ . '/../src/CryptoParams.php';
 // Autoload PHP Unit though Composer
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 class CryptoParamsTest extends PHPUnit_Framework_TestCase{
 

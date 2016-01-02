@@ -1,7 +1,7 @@
 <phpunit bootstrap="vendor/autoload.php">
   <testsuites>
     <testsuite name="CryptoParams">
-      <file>CryptoParamsTest.php</file>
+      <file>test/CryptoParamsTest.php</file>
     </testsuite>
   </testsuites>
 

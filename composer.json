@@ -34,5 +34,12 @@
         "psr-4": {
             "CryptoParams\\":"src/"
         }
-    }
+    },
+    "archive": {
+        "exclude": [
+            "/test", 
+            "/build", 
+            "/vendor"
+        ]
+    }    
 }

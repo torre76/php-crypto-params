@@ -1,9 +1,24 @@
 <?php
+/**
+ * Utility function to encrypt - decrypt string using AES symmetric algorithm that is compatible with Crypto-JS
+ *
+ * @link https://code.google.com/p/crypto-js/ Crypto-JS
+ * @author Gian Luca Dalla Torre <gianluca@gestionaleauto.com>
+ */
 
 namespace CryptoParams;
 
 // Hex2Bin is not available on PHP 5.3
 if ( !function_exists( 'hex2bin' ) ) {
+	/**
+	 *
+	 * Transform an hexadecimal string into a binary array.
+	 * 
+	 * This function is defined here only because in PHP 5.3 it is not available. Otherwise the core function is used.
+	 *
+	 * @param string $str String expressed in hexadecimal format that needs to be converted
+	 * @return string Binary string containing data
+	 */
     function hex2bin( $str ) {
     	if (!ctype_xdigit($str)){
     		return FALSE;

@@ -4,6 +4,8 @@
  *
  * @link https://code.google.com/p/crypto-js/ Crypto-JS
  * @author Gian Luca Dalla Torre <gianluca@gestionaleauto.com>
+ *
+ * @package CryptoParams
  */
 
 namespace CryptoParams;
@@ -33,6 +35,13 @@ if ( !function_exists( 'hex2bin' ) ) {
     }
 }
 
+/**
+ * 
+ * Exception used to signal CryptoParams specific errors
+ *
+ * @author Gian Luca Dalla Torre <gianluca@gestionaleauto.com>
+ * @link CryptoParams.CryptoParams.html CryptoParams
+ */
 class CryptoParamsException extends \Exception{}
 
 class CryptoParams {
